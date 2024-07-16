@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  margin-bottom: 0;
+  padding: 10px 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  padding: 3px 12px;
+  border-radius: 4px;
+}
+
+body {
+  background-image: url(../todoList/img/paperBackground.jpg);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+}
+
+.container {
+  height: 100vh;
+  background-color: #ffffff2b;
+  padding: 50px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.inputArea {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputArea input{
+  width: 90%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+
+/* 
+.taskArea {
+  border: 1px solid #F14234;
+} */
+
+.taskTabs {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0;
+  position: relative;
+}
+
+#tabsClick {
+  min-width: 32px;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  top: 40px;
+  background-color: #e8544a;
+  border-radius: 2px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 12px 0;
+}
+
+.todoComplete {
+  text-decoration: line-through;
+}
