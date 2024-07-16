@@ -18,6 +18,14 @@ let todoList = [];
 let mode = "all"; // render 함수에서 재사용 하기 위해 전역변수로 만듬
 let filterList = []; // 전체, 진행중, 완료 list를 배열에 넣는다 
 
+// input 창에 입력하고 엔터키 입력 하면 Todo에 추가 
+textInput.addEventListener("keypress", function(event){
+  if(event.key === "Enter") {
+    event.preventDefault();
+    addTodo();
+  }
+})
+
 todoAddBtn.addEventListener("click", addTodo);
 
 // Tab 클릭 이벤트
@@ -28,7 +36,7 @@ for (let i = 1; i < tabs.length; i++) {
 }
 console.log(tabs);
 
-// + 버튼을 클릭하면, 할일이 추가된다.
+// + 버튼을 클릭하면, Todo가 추가된다.
 function addTodo() {
   // 스트링타입(문자열)이 끝났는지에 대한 여부를 알 수 없기 때문에 todo객체로 변환
   // let todoItem = textInput.value;
@@ -135,7 +143,7 @@ function randomIdGenerate() {
 
 // ======== 첫번째 프로세스 끝 ==========
 
-//Tab 클릭 이벤트 fitter 함수
+// Tab 클릭 이벤트 fitter 함수
 function filter(event) {
   // console.log(filter, event.target.id);
 

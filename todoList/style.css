@@ -47,7 +47,6 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
-
 /* 
 .taskArea {
   border: 1px solid #F14234;
@@ -62,7 +61,7 @@ body {
 }
 
 #tabsClick {
-  min-width: 32px;
+  min-width: 100%;
   height: 2px;
   position: absolute;
   left: 0;
