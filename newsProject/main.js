@@ -3,6 +3,11 @@ const API_KEY = `2dca3a19f2b04aa286cc75e28f353484`
 let newsList = [];
 let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`);
 
+let totalResults = 0;
+let page = 1;
+const pageSize = 10;
+const groupSize = 5;
+
 // menu 클릭 이벤트
 const menus = document.querySelectorAll(".menus button");
 // forEach => Array(배열)의 매서드를 각 배열 요소에 대해 제공된 함수를 한번씩 실행 
@@ -30,7 +35,10 @@ const getNews = async () => {
         throw new Error("No result for this search");
       }
       newsList = data.articles;
+      console.log(data)
+      totalResults = data.totalResults;
       render();
+      pageNationRender();
 
     }else {
       throw new Error(data.message);
@@ -92,7 +100,6 @@ const getNewsByKeyword = async () => {
   getNews();
 };
 
-
 const render = () => {
   const newsHTML = newsList.map((news) => `
           <div class="row news-content ">
@@ -126,5 +133,27 @@ const errorRender = (errorMessage) => {
   document.getElementById("news-board").innerHTML = errorHTML;
 }
 
+// 페이지네이션
+const pageNationRender = () => {
+  // pageGroup
+  const pageGroup = Math.ceil(page/groupSize);  // ceil 반올림
+  // lastPage
+  const lastPage = pageGroup * groupSize;
+  // firstPage
+  const firstPage = lastPage - (groupSize - 1);
+
+  console.log(pageGroup);
+  console.log(lastPage);
+  console.log(firstPage);
+  
+  let paginationHTML = ``;
+
+  for(let i=firstPage; i <= lastPage; i++) {
+    paginationHTML += `  <li class="page-item"><a class="page-link" href="#">${i}</a></li>`
+  }
+
+document.querySelector(".pagination").innerHTML = paginationHTML;
+
+}
 
 getLatestNews();
