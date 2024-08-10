@@ -155,14 +155,20 @@ const pageNationRender = () => {
   if (lastPage > totalPages) {
     lastPage = totalPages;
   }
-  if(lastPage === 0) {
 
-  }
   // firstPage
   const firstPage =
     lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
 
-  let paginationHTML = `<li class="page-item ${page <= firstPage ? "disabled" :""}" onclick="movePage(${page-1})">
+  let paginationHTML = `
+    <li class="page-item ${page === firstPage ? "disabled" : ""}" onclick="movePage(${firstPage})">
+      <a class="page-link" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item ${
+      page <= firstPage ? "disabled" : ""
+    }" onclick="movePage(${page - 1})">
     <a class="page-link" href="#">
       Previous
     </a>
@@ -175,12 +181,21 @@ const pageNationRender = () => {
     }" onclick="movePage(${i})" ><a class="page-link">${i}</a></li>`;
   }
 
-  paginationHTML += `<li class="page-item ${page === lastPage ? "disabled" : ""}" onclick="movePage(${page+1})">
+  paginationHTML += `<li class="page-item ${
+    page === lastPage ? "disabled" : ""
+  }" onclick="movePage(${page + 1})">
   <a class="page-link" href="#">Next</a></li>
-`;
-  
+
+  <li class="page-item ${page ===lastPage ? "disabled": ""}" onclick="movePage(${lastPage})">
+      <a class="page-link" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  `;
+
   document.querySelector(".pagination").innerHTML = paginationHTML;
 };
+// 페이지네이션 클릭 이벤트
 const movePage = (pageNum) => {
   console.log("click", pageNum);
   page = pageNum;
