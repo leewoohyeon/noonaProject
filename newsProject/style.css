@@ -87,3 +87,9 @@
   line-height: 12px;
   color: #727272;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 23px ;
+}
